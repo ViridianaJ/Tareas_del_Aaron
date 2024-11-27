@@ -1,8 +1,8 @@
 <?php
-$host_db="127.0.0.1:3308";
+$host_db="127.0.0.1:3306";
 $user_db="root";
-$pass_db="123456";
-$db_name="test_php";
+$pass_db="%_Njimen70_%";
+$db_name="odonto";
 
 $conexion = new mysqli($host_db,$user_db,$pass_db,$db_name);
 

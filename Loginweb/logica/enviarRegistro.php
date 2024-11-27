@@ -14,7 +14,7 @@ if (isset($_POST['n_carnet'], $_POST['nombre'], $_POST['edad'], $_POST['fecha_ci
     $telefono = $_POST['telefono'];  // Teléfono
 
     // Verificar si el paciente ya está registrado
-    // Aquí verificamos si ya existe el mismo número de carnet para evitar duplicados   
+    // Aquí verificamos si ya existe el mismo número de carnet para evitar duplicados
     $stmt = $conexion->prepare("SELECT * FROM paciente WHERE n_carnet = ?");
     $stmt->bind_param("s", $n_carnet);  // 's' indica que el parámetro es una cadena (texto)
     $stmt->execute();
@@ -27,7 +27,7 @@ if (isset($_POST['n_carnet'], $_POST['nombre'], $_POST['edad'], $_POST['fecha_ci
         echo "<a href='./Registro.php'>Nuevo registro</a>";
     } else {
         // Si no está registrado, insertar los datos en la base de datos
-        // Aquí insertamos el nombre del paciente y otros datos, dejando que la base de datos maneje el ID.
+        // Aquí insertamos el nombre del paciente y otros datos
         $stmt = $conexion->prepare("INSERT INTO paciente (n_carnet, nombre, edad, fecha_cita, email, telefono) 
                                     VALUES (?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssss", $n_carnet, $nombre, $edad, $fecha_cita, $email, $telefono);
